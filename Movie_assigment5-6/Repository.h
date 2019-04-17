@@ -1,23 +1,21 @@
 //
-// Created by Suciu Patrick on 2019-04-16.
+// Created by Suciu Patrick on 2019-04-10.
 //
 
-#ifndef MOVIE_FINAL_REPOSITORY_H
-#define MOVIE_FINAL_REPOSITORY_H
+#ifndef BACTERIA_TEST_REPOSITORY_H
+#define BACTERIA_TEST_REPOSITORY_H
 
-#include "Movie.h"
+#include "Bacteria.h"
 #include <vector>
-class Repository {
+
+class Repository{
 private:
-    std::vector<Movie> da;
+    std::vector<Bacteria> da;
 public:
-    std::vector<Movie> &getDa();
-    bool addToWatchList(Movie m);
-    bool addToRepository(Movie m);
-    bool removeFromRepository(std::string title);
-    bool updateMovie(Movie m);
-    bool increaseRateByTitle(std::string title);
-    int seeByGenre(std::string genre, int index);
+    bool addToRepository(Bacteria bacteria);
+    std::vector<Bacteria> &getDa();
+
+    Repository(const std::vector<Bacteria> &da);
 };
 
-#endif //MOVIE_FINAL_REPOSITORY_H
+#endif //BACTERIA_TEST_REPOSITORY_H

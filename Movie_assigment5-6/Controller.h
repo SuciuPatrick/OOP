@@ -1,29 +1,20 @@
 //
-// Created by Suciu Patrick on 2019-04-16.
+// Created by Suciu Patrick on 2019-04-10.
 //
 
-#ifndef MOVIE_FINAL_CONTROLLER_H
-#define MOVIE_FINAL_CONTROLLER_H
+#ifndef BACTERIA_TEST_CONTROLLER_H
+#define BACTERIA_TEST_CONTROLLER_H
 
 #include "Repository.h"
 
-class Controller{
+class Controller {
 private:
     Repository repo;
-    Repository watchlist;
 public:
-    //Constructor
-    Controller(const Repository &repo);
-
-    //getter
+    bool add(Bacteria bacteria);
     Repository &getRepo();
 
-    Repository &getWatchlist();
-
-    //Op
-    bool add(Movie m);
-    bool remove(std::string);
-    bool update(Movie m);
+    Controller(const Repository &repo);
 };
 
-#endif //MOVIE_FINAL_CONTROLLER_H
+#endif //BACTERIA_TEST_CONTROLLER_H

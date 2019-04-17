@@ -1,37 +1,17 @@
 //
-// Created by Suciu Patrick on 2019-04-16.
+// Created by Suciu Patrick on 2019-04-10.
 //
 
 #include "Controller.h"
+#include "Repository.h"
 
-//Constructor
-Controller::Controller(const Repository &repo) : repo(repo) {}
 
-//It calls the method add from the repository.
-bool Controller::add(Movie m) {
-    this->repo.addToRepository(m);
+bool Controller::add(Bacteria bacteria) {
+    this->repo.addToRepository(bacteria);
 }
 
-//It calls the method remove from the repository.
-bool Controller::remove(std::string title) {
-    if (this->repo.removeFromRepository(title))
-        return true;
-    return false;
-}
-
-//It calls the method update from the repository.
-bool Controller::update(Movie m) {
-    if (this->repo.updateMovie(m))
-        return true;
-    return false;
-}
-
-//getter WatchList
-Repository &Controller::getWatchlist(){
-    return watchlist;
-}
-
-//getter Repository
-Repository &Controller::getRepo(){
+Repository &Controller::getRepo() {
     return repo;
 }
+
+Controller::Controller(const Repository &repo) : repo(repo) {}

@@ -1,44 +1,35 @@
 #include <iostream>
-#include <vector>
-
-#include "Movie.h"
-#include "Repository.h"
+#include "Bacteria.h"
 #include "Controller.h"
 #include "UI.h"
 
+
+void testController()
+{
+    std::vector<Bacteria> ds;
+    Repository rep = Repository(ds);
+    Controller c = Controller(rep);
+
+    c.add(Bacteria("xamin", 200, "true"));
+    assert(c.getRepo().getDa()[0].getName() == "xamin");
+    assert(c.getRepo().getDa()[0].getNrOfOrganism() == 200);
+    assert(c.getRepo().getDa()[0].IsImmune() == "true");
+
+
+}
+
 int main() {
-    Repository repo = Repository();
+    std::vector<Bacteria> da;
+    Repository repo = Repository(da);
     Controller controller = Controller(repo);
+
+    controller.add(Bacteria("xamin", 200, "true"));
+    controller.add(Bacteria("E_coli", 100, "false"));
+    controller.add(Bacteria("Mycobacterium", 150, "true"));
+    controller.add(Bacteria("Steptococ", 200, "false"));
+
     UI ui = UI(controller);
-    ui.addEntities();
-    std::string input, name;
-
-    ui.printMenu();
-    while (true) {
-        getline(std::cin, input);
-        if (input == "Admin"){
-            ui.startappAdmin();
-        }
-        else if (input == "User"){
-            ui.startappUser();
-        }
-        else if (input == "Exit"){
-            std::cout << "Exit application";
-            break;
-        }
-        else
-            std::cout << "Invalid command";
-    }
-
-    /*
-     std::vector<Movie>::iterator it;
-
-    controller.getRepo().removeFromRepository("Regele plajei");
-    controller.getRepo().removeFromRepository("Black Panther");
-    controller.getRepo().updateMovie(Movie("Free Solo", "Comedy", 2200, 1000, "dassda"));
-
-    for (it = controller.getRepo().getDa().begin(); it < controller.getRepo().getDa().end(); it++)
-        std::cout << it->toString() << '\n';
-    */
+    ui.startApp();
+    //std::cout << a.toString();
     return 0;
 }
